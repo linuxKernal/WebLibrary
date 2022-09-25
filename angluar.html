@@ -1,0 +1,200 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <title>libary Management using angluarJS</title> 
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;0,800;1,400;1,500;1,700&display=swap" rel="stylesheet">
+ <style>
+     *{
+         padding: 0;
+         margin: 0;
+         box-sizing: border-box;
+     }
+     .nav {
+        padding: .3rem;
+        display: flex;
+        gap:10%;
+        align-items: center;
+    }
+    .nav > h2{
+        font-size: 2rem;
+        color: green;
+    }
+    .navLogoDiv > img{
+        width: 20rem;
+    }
+    h2{
+        text-align: center;
+        margin-left: 100px;
+        font-weight: bold;
+    }
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 5rem auto;
+    }
+    th{
+        background-color: rgb(36, 144, 245);
+        color: white;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    .searchBox{
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        align-items: center;
+        border: 2px solid rgb(66, 66, 66);
+        width:20rem;
+        border-radius: .5rem;
+        position: relative;
+        left: 10%;
+        top:3rem;
+    }
+    .searchBox > img{
+        width:33px;
+        /* margin: .3rem; */
+    }
+    .inputData{
+        font-size: 1.2rem;
+        padding: .2rem;
+        border-left: 2px solid rgb(66, 66, 66);
+        height: 100%;
+        margin-left: .3rem;
+    }
+    .inputData:focus{
+        outline: none;
+    }
+ </style>
+ </head> 
+ <body ng-app="myModule"> 
+    <div class="nav">
+        <div class="navLogoDiv">
+            <img src="https://nec.edu.in/wp-content/themes/vajra/assets/images/logo_2.svg" alt="website logo">
+        </div>
+        <h2>Libary Management</h2>
+    </div>
+    <div class="searchBox">
+        <img src="./search.png" alt="">
+        <input class="inputData" type="search" ng-model="searchstuddetails" placeholder="search" />
+    </div>
+    <div ng-controller="myController"> 
+    <table> 
+    <thead> 
+        <tr>
+        <th>Book ID</th>
+        <th>Book Name</th> 
+        <th>Book Price</th>
+        <th>Book Status</th> 
+        <th>Book Stock</th>
+        <th>Book Author</th>
+        </tr> 
+    </thead>
+    <tbody>
+        <tr ng-repeat="student in students | filter:searchstuddetails"> 
+        <td> {{ student.ID }} </td>
+        <td> {{ student.Name }} </td>
+        <td> {{ student.Price }} </td>
+        <td> {{ student.Status }} </td>
+        <td> {{ student.Stock }} </td>
+        <td> {{ student.Author }} </td>
+        </tr> 
+    </tbody> 
+    </table> 
+    </div>
+ <script>
+ var app = angular
+ .module("myModule", [])
+ .controller("myController", function ($scope) {
+ var students = [
+ {
+     ID: 101,
+     Name:"Sherlock Holmes",
+     Price:"20$",
+     Status:"available",
+     Stock:23,
+     Author:"Sir Arthur Conan Doyle"
+
+ },
+ {
+     ID: 102,
+     Name:"C programming",
+     Price:"15$",
+     Status:"available",
+     Stock:12,
+     Author:"Brian W. Kernighan"
+
+
+ },
+ {
+     ID: 103,
+     Name:"Discovery of India",
+     Price:"20$",
+     Status:"available",
+     Stock:26,
+     Author:"Jawaharlal Nehru"
+
+
+ },
+ {
+     ID: 104,
+     Name:"harry potter",
+     Price:"25$",
+     Status:"available",
+     Stock:56,
+     Author:"J.K Rowling"
+
+ },
+ {
+     ID: 105,
+     Name:"The Secret",
+     Price:"20$",
+     Status:"available",
+     Stock:14,
+     Author:"Rhonda Byrne"
+
+
+ },
+ {
+     ID: 106,
+     Name:"Romeo and Juliet",
+     Price:"15$",
+     Status:"available",
+     Stock:24,
+     Author:"William Shakespeare"
+
+
+ },
+ {
+     ID: 107,
+     Name:"war and peace",
+     Price:"33$",
+     Status:"available",
+     Stock:21,
+     Author:"Leo Tolstoy"
+
+
+ },
+ {
+     ID: 108,
+     Name:"Ponniyin Selvan",
+     Price:"45$",
+     Status:"available",
+     Stock:16,
+     Author:"Kalki Krishnamurthy"
+
+
+ }
+ ];
+ $scope.students = students;
+ });
+ </script>
+ </body>
+</html>
